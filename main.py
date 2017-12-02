@@ -12,3 +12,6 @@ print hologram.getResultString(response_code)
 
 #Find Location
 print hologram.network.location
+
+#Disconnect
+hologram.network.disconnect
