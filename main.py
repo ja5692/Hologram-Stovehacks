@@ -28,7 +28,7 @@ def update():
     #Upload Databa
     hologram.sendMessage(json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
 
-t = Timer(600.0, update)
+t = threading.Timer(600.0, update)
 t.start()
 
 #End connection when user presses "ESC"
