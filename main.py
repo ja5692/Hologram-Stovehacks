@@ -7,9 +7,6 @@ result = hologram.network.connect()
 if result == False:
     print ' Failed to connect to cell network'
 
-response_code = hologram.sendMessage("hello, world!")
-print hologram.getResultString(response_code)
-
 #Find Location
 location = hologram.network.location
 print "Altitude:"
@@ -22,6 +19,9 @@ print "Uncertainty:"
 print location.uncertainty
 print "Time:"
 print location.time
+
+#Upload Databa
+hologram.sendMessage(location)
 
 #Disconnect
 hologram.network.disconnect()
