@@ -1,4 +1,5 @@
 from Hologram.HologramCloud import HologramCloud
+import json
 
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
@@ -23,7 +24,7 @@ print "Time:"
 print location.time
 
 #Upload Databa
-hologram.sendMessage({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time})
+hologram.sendMessage(json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
 
 #Disconnect
 hologram.network.disconnect()
