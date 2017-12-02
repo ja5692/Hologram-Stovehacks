@@ -17,11 +17,13 @@ print "Latitude:"
 print location.latitude
 print "Uncertainty:"
 print location.uncertainty
+print "Date:"
+print location.date
 print "Time:"
 print location.time
 
 #Upload Databa
-hologram.sendMessage(location)
+hologram.sendMessage({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time})
 
 #Disconnect
 hologram.network.disconnect()
