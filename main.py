@@ -1,7 +1,6 @@
 from Hologram.HologramCloud import HologramCloud
 import json
 import threading
-from msvcrt import getch
 
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
