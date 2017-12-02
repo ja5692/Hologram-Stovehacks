@@ -1,6 +1,6 @@
 from Hologram.HologramCloud import HologramCloud
 
-//Instantiating a hologram instance
+#Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
 
 result = hologram.network.connect()
