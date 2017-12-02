@@ -11,7 +11,7 @@ response_code = hologram.sendMessage("hello, world!")
 print hologram.getResultString(response_code)
 
 #Find Location
-locaton = hologram.network.location
+location = hologram.network.location
 print "Altitude:"
 print location.altitude
 print "Longitude:"
