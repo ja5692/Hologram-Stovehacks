@@ -9,3 +9,6 @@ if result == False:
 
 response_code = hologram.sendMessage("hello, world!")
 print hologram.getResultString(response_code)
+
+#Find Location
+print hologram.network.location
