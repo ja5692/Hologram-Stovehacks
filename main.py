@@ -36,6 +36,6 @@ t.start()
 try:
     while True:
         time.sleep(1)
-except Exception as e:
+except KeyboardInterrupt as e:
     hologram.network.disconnect()
     t.cancel()
