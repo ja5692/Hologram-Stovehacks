@@ -1,7 +1,7 @@
 from Hologram.HologramCloud import HologramCloud
 import json
 import threading
-from msvcrt import getch
+
 
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
@@ -31,11 +31,3 @@ def update():
 
 t = threading.Timer(600.0, update)
 t.start()
-
-#End connection when user presses "ESC"
-while True:
-    key = ord(getch())
-    if key == 27:
-        t.cancel()
-        #Disconnect
-        hologram.network.disconnect()
