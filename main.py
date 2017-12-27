@@ -29,13 +29,6 @@ def update():
     #Upload Databa
     hologram.sendMessage(json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
 
-t = threading.Timer(60.0, update)
-t.daemon = True
-t.start()
 
-try:
-    while True:
-        time.sleep(1)
-except KeyboardInterrupt as e:
-    hologram.network.disconnect()
-    t.cancel()
+update()
+hologram.network.disconnect()
