@@ -28,7 +28,7 @@ def update():
 
     #Upload Databa
     hologram.sendMessage(json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
-
+    hologram.sendSMS("+16476384839", json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
 
 update()
 hologram.network.disconnect()
