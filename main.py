@@ -34,7 +34,7 @@ def update():
 #User asks for status
 while True:
     sms_obj = hologram.popReceivedSMS()
-    if sms_obj is not None
+    if sms_obj is not None:
         update()
         break
     delay (1000)
