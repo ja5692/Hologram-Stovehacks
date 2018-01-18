@@ -30,10 +30,11 @@ def update():
 
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
     print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
+    print "temp:"+temperature
+    print "humid:"+humidity
 
     #Upload Databa
     hologram.sendMessage(json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
-    hologram.sendSMS("+16476384839", json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
 
 update()
 hologram.network.disconnect()
