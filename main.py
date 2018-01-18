@@ -15,8 +15,8 @@ if result == False:
 def update():
     #Log temperature
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
-    temperature = {0:0.1f}.format(temperature)
-    humidity = {1:0.1f}.format(humidity)
+    temperature = '{0:0.1f}'.format(temperature)
+    humidity = '{1:0.1f}'.format(humidity)
     print "humid:"
     print humidity
     print "temp:"
