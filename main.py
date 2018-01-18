@@ -7,6 +7,7 @@ import Adafruit_DHT
 
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
+hologram.network.disconnect()
 
 result = hologram.network.connect()
 if result == False:
