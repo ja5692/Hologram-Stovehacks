@@ -13,21 +13,6 @@ if result == False:
     print ' Failed to connect to cell network'
 
 def update():
-    #Find Location
-    location = hologram.network.location
-    print "Altitude:"
-    print location.altitude
-    print "Longitude:"
-    print location.longitude
-    print "Latitude:"
-    print location.latitude
-    print "Uncertainty:"
-    print location.uncertainty
-    print "Date:"
-    print location.date
-    print "Time:"
-    print location.time
-
     #Log temperature
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
     print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
@@ -38,11 +23,8 @@ def update():
     print "temp:"
     print temperature
 
-        #Upload Data
-        hologram.sendMessage(json.dumps({"Humidity":Humidity, "Temperature":temperature}))
-
-    #Upload Databa
-    hologram.sendMessage(json.dumps({"Altitude":location.altitude, "Longitude":location.longitude, "Latitude":location.latitude, "Uncertainty": location.uncertainty, "Date":location.date, "Time":location.time}))
+    #Upload Data
+    hologram.sendMessage(json.dumps({"Humidity":Humidity, "Temperature":temperature}))
 
 update()
 hologram.network.disconnect()
