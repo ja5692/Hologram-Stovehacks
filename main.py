@@ -37,6 +37,6 @@ while True:
     if sms_obj is not None:
         update()
         break
-    delay (1000)
+    time.sleep(1)
 
 hologram.network.disconnect()
