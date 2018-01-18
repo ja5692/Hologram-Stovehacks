@@ -14,13 +14,6 @@ if result == False:
 
 recv = hologram.enableSMS()
 
-while True:
-    sms_obj = hologram.popReceivedSMS()
-    if sms_obj != None
-        update()
-    delay (1000)
-
-
 def update():
     #Log temperature
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
@@ -40,5 +33,11 @@ def update():
     hologram.sendMessage(json.dumps({"Temperature":temperature + "C"}))
 
 #User asks for status
-update()
+while True:
+    sms_obj = hologram.popReceivedSMS()
+    if sms_obj != None
+        update()
+        break
+    delay (1000)
+
 hologram.network.disconnect()
