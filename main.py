@@ -28,14 +28,13 @@ def update():
         #User replies
         #Process response and act accordingly
 
-
     #Upload Data
     hologram.sendMessage(json.dumps({"Temperature":temperature + "C"}))
 
 #User asks for status
 while True:
     sms_obj = hologram.popReceivedSMS()
-    if sms_obj != None
+    if sms_obj is not None
         update()
         break
     delay (1000)
