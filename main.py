@@ -12,6 +12,8 @@ result = hologram.network.connect()
 if result == False:
     print ' Failed to connect to cell network'
 
+print 'CONNECTION STATUS: ' + str(hologram.network.getConnectionStatus())
+
 #Enables Hologram to listen for incoming SMS messages
 recv = hologram.enableSMS()
 
