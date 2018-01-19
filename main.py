@@ -17,7 +17,6 @@ recv = hologram.enableSMS()
 def update():
     #Log temperature
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
-    print 'Temp: {0:0.1f} C  Humidity: {1:0.1f} %'.format(temperature, humidity)
     temperature = '{0:0.1f}'.format(temperature)
 
     #Determine if stove is on or off
@@ -34,6 +33,8 @@ def update():
 while True:
     sms_obj = hologram.popReceivedSMS()
     if sms_obj is not None:
+        hologram.sendMessage(json.dumps("Message:" + sms_obj["message"]))
+        print "Message:" + sms_obj["message"]
         update()
         break
     time.sleep(1)
