@@ -12,6 +12,7 @@ result = hologram.network.connect()
 if result == False:
     print ' Failed to connect to cell network'
 
+#Enables Hologram to listen for incoming SMS messages
 recv = hologram.enableSMS()
 
 def update():
@@ -30,8 +31,10 @@ def update():
 
         count = 0
         while True:
+            #Reads user response
             sms_obj = hologram.popReceivedSMS()
             message = sms_obj.message
+
             if message == "yes":
                 #hologram.sendMessage(json.dumps("Turning off stove."))
                 print "Turning off stove."
@@ -44,20 +47,21 @@ def update():
                 #hologram.sendMessage(json.dumps("Please enter a valid response. (yes/no)"))
                 print "Please enter a valid response. (yes/no)"
             elif count >= 30:
-                #hologram.sendMessage(json.dumps("Message: " + message))
-                print "No response recieved within 30 minutes. Reverting to standby."
+                #hologram.sendMessage(json.dumps("No response recieved within 30 minutes. Reverting to standby mode."))
+                print "No response recieved within 30 minutes. Reverting to standby mode."
                 break
             count += 1
             time.sleep(1)
 
-#User asks for status
+#Hologram waits for user input (standby mode)
 while True:
     sms_obj = hologram.popReceivedSMS()
-    message = sms_obj.message
-
-    if message == "status":
-        #hologram.sendMessage(json.dumps("Message: " + message))
+    if sms_obj is not None: #If user sends something:
+        message = sms_obj.message
         print "Message: " + message
+
+        if message = "status" #If user enters keyword
+        #hologram.sendMessage(json.dumps("Message: " + message))
         update()
         break
     time.sleep(1)
