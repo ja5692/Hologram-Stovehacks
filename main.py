@@ -33,8 +33,9 @@ def update():
 while True:
     sms_obj = hologram.popReceivedSMS()
     if sms_obj is not None:
-        hologram.sendMessage(json.dumps("Message:" + sms_obj["message"]))
-        print "Message:" + sms_obj["message"]
+        message = sms_obj.message
+        hologram.sendMessage(json.dumps("Message: " + message))
+        print "Message: " + message
         update()
         break
     time.sleep(1)
