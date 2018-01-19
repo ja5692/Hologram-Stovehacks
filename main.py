@@ -60,7 +60,7 @@ while True:
         message = sms_obj.message
         print "Message: " + message
 
-        if message == "status" #If user enters keyword
+        if message is "status" #If user enters keyword
         #hologram.sendMessage(json.dumps("Message: " + message))
         update()
         break
