@@ -21,7 +21,7 @@ def update():
     #Log temperature
     humidity, temperature = Adafruit_DHT.read_retry(11, 4)
     temperature = '{0:0.1f}'.format(temperature)
-    print "Variable type: " + type(temperature)
+    print "Variable type: " + str(type(temperature))
 
     #Determine if stove is on or off
     if temperature <= 30:
@@ -65,7 +65,7 @@ while True:
         if message.lower() in "status update": #If user enters keyword
             #hologram.sendMessage(json.dumps("Message: " + message))
             update()
-        break
+            break
     time.sleep(1)
 
 hologram.network.disconnect()
