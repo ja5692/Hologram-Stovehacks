@@ -11,6 +11,7 @@ dhtpin = 4 #GPIO pin the DHT is connected to
 servopin = 17 #GPIO pin the servo motor is connected to
 
 #Starts servo in neutral position
+servo = PWM.Servo()
 servo.set_servo(servopin, 1200)
 
 #Instantiating a hologram instance
