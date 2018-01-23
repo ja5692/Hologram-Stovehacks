@@ -42,7 +42,7 @@ def update():
             #Reads user response
             sms_obj = hologram.popReceivedSMS()
             if sms_obj is not None:
-                message = sms_obj.message
+                message = sms_obj.message.lower()
                 if message == "yes":
                     #hologram.sendMessage(json.dumps("Turning off stove."))
                     print "Turning off stove."
