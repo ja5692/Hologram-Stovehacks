@@ -5,28 +5,34 @@ import time
 import sys
 import Adafruit_DHT
 
+mintemp = 30 #Minimum temperature required to trigger the "stove on" status
+sensor = Adafruit_DHT.DHT11
+gpio = 4 #GPIO pin the DHT is connected to
+
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
 
 result = hologram.network.connect()
-if result == False:
-    print ' Failed to connect to cell network'
-
 print 'CONNECTION STATUS: ' + str(hologram.network.getConnectionStatus())
 
-#Enables Hologram to listen for incoming SMS messages
-recv = hologram.enableSMS()
+if result == False:
+    print ' Failed to connect to cell network'
+else:
+    print "Connection successful!"
+    print "Hologram online!"
+    #Enables Hologram to listen for incoming SMS messages
+    recv = hologram.enableSMS()
 
 def update():
     #Log temperature
-    humidity, temperature = Adafruit_DHT.read_retry(11, 4)
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, 4)
     temperature = float('{0:0.1f}'.format(temperature))
     print "Variable type: " + str(type(temperature))
 
     #Determine if stove is on or off
-    if temperature <= 30:
+    if temperature <= mintemp:
         #hologram.sendMessage(json.dumps("Your stove is off." + "Temperature: " + temperature + "C"))
-        print "Your stove is off." + "Temperature: " + str(temperature) + "C"
+        print "Your stove is off. " + "Temperature: " + str(temperature) + "C"
     else:
         #hologram.sendMessage(json.dumps("Your stove is on. Would you like it to be turned off?" + "Temperature: " + temperature + "C"))
         print "Your stove is on. Would you like it to be turned off?" + "Temperature: " + str(temperature) + "C"
