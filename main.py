@@ -4,18 +4,16 @@ import threading
 import time
 import sys
 import Adafruit_DHT
-import RPi.GPIO as GPIO
+from RPIO import PWM
 
 mintemp = 30 #Minimum temperature required to trigger the "stove on" status
 sensor = Adafruit_DHT.DHT11 #Sensor type. Change to Adafruit_DHT.DHT22 if using a DHT 22 sensor.
 GPIO.setmode(GPIO.BOARD)
 dhtpin = 7 #GPIO pin the DHT is connected to
 servopin = 11 #GPIO pin the servo motor is connected to
-GPIO.setup(servopin,GPIO.OUT)
 
 #Starts servo in neutral position
-servo = GPIO.PWM(11, 50)
-servo.start(7.5)
+servo.set_servo(servopin, 1200)
 
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular')
@@ -54,7 +52,7 @@ def update():
                 if message == "yes":
                     #hologram.sendMessage(json.dumps("Turning off stove."))
                     print "Turning off stove."
-                    servo.ChangeDutyCycle(2.5)#Servo turns off stove
+                    servo.set_servo(servopin, 1200)
                     break
                 elif message == "no":
                     #hologram.sendMessage(json.dumps("Ok. Stove will be left on."))
