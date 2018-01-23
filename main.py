@@ -32,7 +32,6 @@ def update():
     #Log temperature
     humidity, temperature = Adafruit_DHT.read_retry(sensor, dhtpin)
     temperature = float('{0:0.1f}'.format(temperature))
-    print "Variable type: " + str(type(temperature))
 
     #Determine if stove is on or off
     if temperature <= mintemp:
@@ -40,7 +39,7 @@ def update():
         print "Your stove is off. " + "Temperature: " + str(temperature) + "C"
     else:
         #hologram.sendMessage(json.dumps("Your stove is on. Would you like it to be turned off?" + "Temperature: " + temperature + "C"))
-        print "Your stove is on. Would you like it to be turned off?" + "Temperature: " + str(temperature) + "C"
+        print "Your stove is on. Would you like it to be turned off? " + "Temperature: " + str(temperature) + "C"
         #Waits for and processes user response to prompt
         count = 0
         while True:
@@ -73,10 +72,9 @@ while True:
     sms_obj = hologram.popReceivedSMS()
     if sms_obj is not None: #If user sends something:
         message = sms_obj.message
-        print "Message: " + message
+        phone = sms_obj.sender
 
         if message.lower() in "status update": #If user enters keyword
-            #hologram.sendMessage(json.dumps("Message: " + message))
             update()
     time.sleep(1)
 
