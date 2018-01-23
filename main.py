@@ -26,11 +26,11 @@ def update():
     #Determine if stove is on or off
     if temperature <= 30:
         #hologram.sendMessage(json.dumps("Your stove is off." + "Temperature: " + temperature + "C"))
-        print "Your stove is off." + "Temperature: " + temperature + "C"
+        print "Your stove is off." + "Temperature: " + str(temperature) + "C"
     else:
         #hologram.sendMessage(json.dumps("Your stove is on. Would you like it to be turned off?" + "Temperature: " + temperature + "C"))
-        print "Your stove is on. Would you like it to be turned off?" + "Temperature: " + temperature + "C"
-
+        print "Your stove is on. Would you like it to be turned off?" + "Temperature: " + str(temperature) + "C"
+        #Waits for and processes user response to prompt
         count = 0
         while True:
             #Reads user response
@@ -66,7 +66,6 @@ while True:
         if message.lower() in "status update": #If user enters keyword
             #hologram.sendMessage(json.dumps("Message: " + message))
             update()
-            break
     time.sleep(1)
 
 hologram.network.disconnect()
