@@ -14,6 +14,8 @@ servopin = 17 #GPIO pin the servo motor is connected to
 servo = PWM.Servo()
 servo.set_servo(servopin, 1200)
 
+from key import DEVICE_KEY
+KEY = DEVICE_KEY #Replace with your unique device key
 #Instantiating a hologram instance
 hologram = HologramCloud(dict(), network='cellular', authentication_type="csrpsk")
 
@@ -79,7 +81,7 @@ while True:
     sms_obj = hologram.popReceivedSMS()
     if sms_obj is not None: #If user sends something:
         message = sms_obj.message
-        phone = sms_obj.sender
+        phone = "+" + sms_obj.sender
 
         if message.lower() in "status update": #If user enters keyword
             update()
