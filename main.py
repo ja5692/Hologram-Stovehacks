@@ -16,7 +16,7 @@ servo.set_servo(servopin, 1200)
 
 from key import DEVICE_KEY
 credentials = DEVICE_KEY #Replace with your unique SIM device key
-Instantiating a hologram instance
+#Instantiating a hologram instance
 hologram = HologramCloud(credentials, network='cellular', authentication_type="csrpsk")
 
 result = hologram.network.connect()
