@@ -14,10 +14,10 @@ servopin = 17 #GPIO pin the servo motor is connected to
 servo = PWM.Servo()
 servo.set_servo(servopin, 1200)
 
-#from key import DEVICE_KEY
-#KEY = DEVICE_KEY #Replace with your unique device key
-#Instantiating a hologram instance
-hologram = HologramCloud(dict(), network='cellular', authentication_type="csrpsk")
+from key import DEVICE_KEY
+credentials = DEVICE_KEY #Replace with your unique SIM device key
+Instantiating a hologram instance
+hologram = HologramCloud(credentials, network='cellular', authentication_type="csrpsk")
 
 result = hologram.network.connect()
 print 'CONNECTION STATUS: ' + str(hologram.network.getConnectionStatus())
