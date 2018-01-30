@@ -39,12 +39,12 @@ def update():
     if temperature <= mintemp:
         #hologram.sendMessage(json.dumps("Your stove is off." + "Temperature: " + temperature + "C"))
         print "Your stove is off. " + "Temperature: " + str(temperature) + "C"
-        hologram.sendSMS(phone, "Your stove is off. " + "Temperature: " + str(temperature) + "C")
+        reply = hologram.sendSMS(phone, "Your stove is off. " + "Temperature: " + str(temperature) + "C")
 
     else:
         #hologram.sendMessage(json.dumps("Your stove is on. Would you like it to be turned off?" + "Temperature: " + temperature + "C"))
         print "Your stove is on. Would you like it to be turned off? " + "Temperature: " + str(temperature) + "C"
-        hologram.sendSMS(phone, "Your stove is on. Would you like it to be turned off? " + "Temperature: " + str(temperature) + "C")
+        reply = hologram.sendSMS(phone, "Your stove is on. Would you like it to be turned off? " + "Temperature: " + str(temperature) + "C")
         #Waits for and processes user response to prompt
         count = 0
         while True:
@@ -55,13 +55,13 @@ def update():
                 if message == "yes":
                     #hologram.sendMessage(json.dumps("Turning off stove."))
                     print "Turning off stove."
-                    hologram.sendSMS(phone, "Turning off stove.")
+                    reply = hologram.sendSMS(phone, "Turning off stove.")
                     servo.set_servo(servopin, 2000)#Servo turns off stove
                     break
                 elif message == "no":
                     #hologram.sendMessage(json.dumps("Ok. Stove will be left on."))
                     print "Ok. Stove will be left on."
-                    hologram.sendSMS(phone, "Ok. Stove will be left on.")
+                    reply = hologram.sendSMS(phone, "Ok. Stove will be left on.")
                     break
                 elif message:
                     #hologram.sendMessage(json.dumps("Please enter a valid response. (yes/no)"))
@@ -71,7 +71,7 @@ def update():
                 elif count >= 30:
                     #hologram.sendMessage(json.dumps("No response recieved within 30 minutes. Reverting to standby mode."))
                     print "No response recieved within 30 seconds. Reverting to standby mode."
-                    hologram.sendSMS(phone, "No response recieved within 30 seconds. Reverting to standby mode.")
+                    reply = hologram.sendSMS(phone, "No response recieved within 30 seconds. Reverting to standby mode.")
                     break
             count += 1
             time.sleep(1)
