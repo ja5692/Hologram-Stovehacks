@@ -15,7 +15,7 @@ servo = PWM.Servo()
 servo.set_servo(servopin, 1200)
 
 #Instantiating a hologram instance
-hologram = HologramCloud(dict(), network='cellular')
+hologram = HologramCloud(dict(), network='cellular', authentication_type="csrpsk")
 
 result = hologram.network.connect()
 print 'CONNECTION STATUS: ' + str(hologram.network.getConnectionStatus())
